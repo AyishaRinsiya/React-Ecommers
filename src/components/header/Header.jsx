@@ -17,6 +17,8 @@ const Header = () => {
 
   const cartItemToArray = Object.values(cartItems);
 
+  console.log(cartItemToArray, "array");
+
   const addToCartItems = cartItemToArray.filter((value) => value === 1);
 
   console.log(addToCartItems, "cart items");
