@@ -5,6 +5,8 @@ import {CgShoppingBag} from 'react-icons/cg'
 import {Link} from 'react-router-dom';
 import {GoThreeBars} from 'react-icons/go'
 import { useState } from 'react';
+import { useContext } from 'react';
+import { ShopContext } from "../../context/Context"; 
 
 const Header = () => {
 
@@ -12,6 +14,11 @@ const Header = () => {
     const toggleMenu = () => {
         setShowMenu((ShowMenu)=>!ShowMenu)
     }
+  const {cartItems} =useContext(ShopContext);
+  const cartItemToArray = Object.values(cartItems);
+  const addToCartItems = cartItemToArray.filter((value) => value === 1);
+  const cartItemCount = addToCartItems.length;
+    
     return (
         <div className={css.container}>
             <div className={css.logo}>
@@ -33,7 +40,10 @@ const Header = () => {
                 
            
             <Link to="/cart">
+            <div className={css.cartIcon}>
+            <div className={css.cartCount}>{cartItemCount}</div>
             <CgShoppingBag size={35}/>
+              </div>
                 </Link>
             </div>
         </div>
